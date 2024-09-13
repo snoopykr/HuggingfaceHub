@@ -56,3 +56,5 @@ llama.cpp/*
 llama-3-Korean-Bllossom-8B/*
 
 llama-3-Korean-Bllossom-8B.gguf
+
+HuggingfaceLocal/cache/*
