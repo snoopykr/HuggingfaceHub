@@ -1,19 +1,25 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM
+import os
 import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
-# model_id = "beomi/Llama-3-Open-Ko-8B-Instruct-preview"
-model_id = "teddylee777/Llama-3-Open-Ko-8B-Instruct-teddynote-gguf"
-filename = "Llama-3-Open-Ko-8B-Instruct-teddynote-gguf-unsloth.Q8_0.gguf"
+os.environ["TRANSFORMERS_CACHE"] = "./cache/"
+os.environ["HF_HOME"] = "./cache/"
+
+model_id = "beomi/Llama-3-Open-Ko-8B-Instruct-preview"
+
+# gguf파일을 지정하는 경우...
+# model_id = "teddylee777/Llama-3-Open-Ko-8B-Instruct-teddynote-gguf"
+# filename = "Llama-3-Open-Ko-8B-Instruct-teddynote-gguf-unsloth.Q8_0.gguf"
 
 # tokenizer = AutoTokenizer.from_pretrained(model_id, gguf_file=filename)
 # model = AutoModelForCausalLM.from_pretrained(model_id, gguf_file=filename)
 
-tokenizer = AutoTokenizer.from_pretrained(model_id, gguf_file=filename)
+tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(
     model_id,
     torch_dtype="auto", # TypeError: BFloat16 is not supported on MPS
-    device_map="auto",
-    gguf_file=filename,
+    # device_map="auto",
+    device_map="cpu", # cpu로 돌리겠다.
     # torch_dtype=torch.bfloat16, # 메모리 에러...
 )
 

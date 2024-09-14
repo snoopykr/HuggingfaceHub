@@ -13,6 +13,7 @@ torch = "2.2.2"
 torchaudio = "2.2.2"
 torchvision = "0.17.2"
 langchain-huggingface = "^0.0.3"
+langchain-community = "^0.2.17"
 
 
 [[tool.poetry.source]]
