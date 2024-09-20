@@ -51,6 +51,8 @@ dependency-graph.png
 *.synctex.gz
 contract_tests/*
 
+poetry.lock
+
 llama.cpp/*
 
 llama-3-Korean-Bllossom-8B/*
